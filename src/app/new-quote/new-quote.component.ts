@@ -11,9 +11,9 @@ import { QuotesService } from '../quotes.service';
 export class NewQuoteComponent implements OnInit {
   constructor(private quotesService: QuotesService) {}
 
-  newQuoteForm!: FormGroup;
-  newQuote: Quote | undefined;
-  todayDate: Date | undefined;
+  newQuoteForm: FormGroup;
+  newQuote: Quote;
+  todayDate: Date;
 
   ngOnInit() {
     this.initForm();
@@ -30,12 +30,13 @@ export class NewQuoteComponent implements OnInit {
     if (this.newQuoteForm.valid) {
       this.newQuote = {
         quote: this.newQuoteForm.get('quote')!.value,
-        author: this.newQuoteForm.get('author')
+        author: this.newQuoteForm.get('author')!.value
           ? this.newQuoteForm.get('author')!.value
           : 'anonymous',
         dateOfInput: new Date(),
       };
       this.quotesService.addNewQuote(this.newQuote);
+      this.newQuoteForm.reset();
     } else {
       alert('something went wrong!');
     }
