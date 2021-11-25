@@ -3,4 +3,7 @@
     *ngFor="let quote of quotes"
     [quote]="quote"
     ></app-quote-item>
+    <div *ngIf="!spinner" class="text-center m-5">
+        <div class="spinner-border"></div>
+    </div>
 </ul>
