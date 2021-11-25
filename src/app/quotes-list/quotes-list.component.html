@@ -1,6 +1,6 @@
 <ul *ngIf="!spinner && !noResult" class="list-group mt-4">
     <app-quote-item
-    *ngFor="let quote of quotes"
+    *ngFor="let quote of quotes.reverse()"
     [quote]="quote"
     ></app-quote-item>
 </ul>
