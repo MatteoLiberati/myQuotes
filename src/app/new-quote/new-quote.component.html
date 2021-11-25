@@ -1,0 +1,53 @@
+<form class="col-sm-6" [formGroup]="newQuoteForm" (ngSubmit)="onSubmit()">
+    <label for="quote" class="form-label text-center w-100">Quote</label>
+    <textarea
+      formControlName="quote"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid':
+          newQuoteForm.get('quote')!.invalid && newQuoteForm.get('quote')!.touched,
+        'is-valid':
+          newQuoteForm.get('quote')!.valid && newQuoteForm.get('quote')!.touched
+      }"
+      name="quote"
+      id="quote"
+      rows="4"
+    ></textarea>
+  
+    <!-- FEEDBACK-->
+    <div
+      *ngIf="
+        newQuoteForm.get('quote')!.invalid && newQuoteForm.get('quote')!.touched
+      "
+      class="invalid-feedback"
+    >
+      Required field
+    </div>
+    <div
+      *ngIf="newQuoteForm.get('quote')!.valid && newQuoteForm.get('quote')!.touched"
+      class="valid-feedback"
+    >
+      Looks good!
+    </div>
+  
+    <label for="author" class="form-label text-center w-100">Author</label>
+    <input
+      formControlName="author"
+      name="author"
+      id="author"
+      class="form-control"
+      type="text"
+      placeholder="leave blank for anonymous author"
+    />
+  
+    <div class="text-center">
+      <button
+        [disabled]="newQuoteForm.invalid"
+        type="submit"
+        class="btn btn-success mt-2"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+  
