@@ -1,9 +1,13 @@
-<ul class="list-group">
+<ul *ngIf="!spinner && !noResult" class="list-group mt-4">
     <app-quote-item
     *ngFor="let quote of quotes"
     [quote]="quote"
     ></app-quote-item>
-    <div *ngIf="!spinner" class="text-center m-5">
-        <div class="spinner-border"></div>
-    </div>
 </ul>
+<div class="spinner-box d-flex justify-content-center align-items-center">
+    <div *ngIf="noResult" class="alert alert-info w-100">
+        <h4 class="text-center">you haven't saved any quotes yet...</h4>
+        <h3 class="text-center">enter a new quote to get started!</h3>
+    </div>
+    <div *ngIf="spinner" class="spinner-border text-primary"></div>
+</div>

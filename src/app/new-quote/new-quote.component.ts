@@ -40,5 +40,10 @@ export class NewQuoteComponent implements OnInit {
     } else {
       alert('something went wrong!');
     }
+    this.onExit();
+  }
+
+  onExit(){
+    this.quotesService.clickCreateQuote.emit(false);
   }
 }

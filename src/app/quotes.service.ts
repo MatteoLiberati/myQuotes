@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { DbConnectionsService } from './db-connections.service';
 import { Quote } from './quote.interface';
@@ -9,25 +9,27 @@ import { Quote } from './quote.interface';
 export class QuotesService {
   constructor(private dbConnectionsService: DbConnectionsService) {}
 
-  quotes : Quote[] = [];
+  // quotes : Quote[] = [];
   updateQuotes : Subject<Quote[]> = new Subject();
-  // quotes : Quote[] = [
-  //   {
-  //     "quote" : "Una vera amica è colei che ti prende per mano e ti tocca il cuore." ,
-  //     "author" : "Gabriel Garcia Márquez",
-  //     "dateOfInput" : new Date(),
-  //   },
-  //   {
-  //     "quote" : "Gioca e basta. Divertiti. Goditi la partita." ,
-  //     "author" : "Michael Jordan",
-  //     "dateOfInput" : new Date(),
-  //   },
-  //   {
-  //     "quote" : "Un’amica è un’altra me stessa." ,
-  //     "author" : "Zenone di Cizio",
-  //     "dateOfInput" : new Date(),
-  //   }
-  // ];
+  clickCreateQuote : EventEmitter<boolean> = new EventEmitter();
+
+  quotes : Quote[] = [
+    {
+      "quote" : "Una vera amica è colei che ti prende per mano e ti tocca il cuore." ,
+      "author" : "Gabriel Garcia Márquez",
+      "dateOfInput" : new Date(),
+    },
+    {
+      "quote" : "Gioca e basta. Divertiti. Goditi la partita." ,
+      "author" : "Michael Jordan",
+      "dateOfInput" : new Date(),
+    },
+    {
+      "quote" : "Un’amica è un’altra me stessa." ,
+      "author" : "Zenone di Cizio",
+      "dateOfInput" : new Date(),
+    }
+  ];
 
   addNewQuote(quote: Quote) {
     this.quotes.push(quote);
@@ -37,7 +39,9 @@ export class QuotesService {
 
   initialLoadingQuotes(){
     this.dbConnectionsService.fetchRecords().subscribe((quotes) => {
-      this.quotes = quotes;
+      if(quotes != null){
+        this.quotes = quotes;
+      }
       this.updateSubjectQuotes();
     })
   }

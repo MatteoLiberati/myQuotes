@@ -1,11 +1,10 @@
 <div class="app">
     <h1 class="pt-5 pb-2 text-center">My quotes</h1>
     <app-header></app-header>
-    <div class="container">
-        <div>
-            <div class="col-sm-6">
-                <app-quotes-list></app-quotes-list>
-            </div>
-        </div>
+    <div class="container mt-2">
+        <app-quotes-list></app-quotes-list>
+    </div>
+    <div *ngIf="createQuote" class="new-quote d-flex justify-content-center align-items-center">
+        <app-new-quote class="w-100 d-flex justify-content-center"></app-new-quote>
     </div>
 </div>

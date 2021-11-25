@@ -13,12 +13,18 @@ export class QuotesListComponent implements OnInit {
 
   spinner: boolean = false;
   quotes : Quote[] = [];
+  noResult: boolean = false;
 
   ngOnInit(): void {
+    this.spinner = true;
     this.quotesService.initialLoadingQuotes();
     this.quotesService.updateQuotes.subscribe(quotes=>{
       this.quotes = quotes;
-      this.spinner = true;
+      this.spinner = false;
+      console.log(this.quotes);      
+      if(this.quotes.length === 0){
+        this.noResult = true;
+      }
     })
   }
 

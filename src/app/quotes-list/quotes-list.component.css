@@ -1,0 +1,12 @@
+.spinner-box{
+    height: 50vh;
+}
+
+.spinner-border{
+    width: 80px;
+    height: 80px;
+}
+
+.list-group{
+    overflow: auto;
+}
