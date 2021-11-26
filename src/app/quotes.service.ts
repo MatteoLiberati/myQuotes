@@ -90,6 +90,8 @@ export class QuotesService {
 
   searchQuotes(userSearch : string){
     if(userSearch != ""){
+      this.noResult.emit(false);
+      this.searchMode.emit(true);
       let strings : string[] = userSearch.toLowerCase().split(" "); 
       // double insertion control
       strings = [...new Set(strings)];
@@ -102,13 +104,19 @@ export class QuotesService {
         
           if(quote.author.toLowerCase().replace(punctRE, ' ').split(" ").includes(string.replace(punctRE, ' ')) 
           || quote.quote.toLowerCase().replace(punctRE, ' ').split(" ").includes(string.replace(punctRE, ' '))){
-            filteredQuotes.push(quote);
+            if(!filteredQuotes.includes(quote)){
+              filteredQuotes.push(quote);
+            }
           }
         })
       }
       this.updateQuotes.next(filteredQuotes.slice());
     }else{
+      this.searchMode.emit(false);
       this.updateSubjectQuotes();
+      if(this.quotes.length != 0){
+        this.noResult.emit(false);
+      }
     }
   }
 

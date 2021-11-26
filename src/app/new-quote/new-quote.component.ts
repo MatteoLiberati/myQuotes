@@ -29,9 +29,9 @@ export class NewQuoteComponent implements OnInit {
   onSubmit() {
     if (this.newQuoteForm.valid) {
       this.newQuote = {
-        quote: this.newQuoteForm.get('quote')!.value,
-        author: this.newQuoteForm.get('author')!.value
-          ? this.newQuoteForm.get('author')!.value
+        quote: this.newQuoteForm.get('quote')!.value.trim(),
+        author: this.newQuoteForm.get('author')!.value.trim()
+          ? this.newQuoteForm.get('author')!.value.trim()
           : 'anonymous',
         dateOfInput: new Date(),
       };

@@ -18,7 +18,10 @@ export class QuoteItemComponent implements OnInit {
 
   onDelete(){
     this.quotesService.deleteQuote(this.index);
-    console.log("delete clicked");
-    
+  }
+
+  onCopy(){
+    const formatQuote = `${this.quote.quote}\n( ${this.quote.author} )`;
+    navigator.clipboard.writeText(formatQuote);
   }
 }
