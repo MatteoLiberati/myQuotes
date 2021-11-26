@@ -7,8 +7,7 @@
       <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
         <button class="btn btn-outline-primary me-5" type="button" (click)="onAddQuote()">Add new quote</button>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary" type="button">Search</button>
+          <input [(ngModel)]="userSearch" (keyup)="onSearch()" name="userSearch" class="form-control me-2" type="text" placeholder="Search">
         </form>
       </div>
     </div>

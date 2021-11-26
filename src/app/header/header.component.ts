@@ -9,12 +9,18 @@ import { QuotesService } from '../quotes.service';
 export class HeaderComponent implements OnInit {
 
   constructor(private quotesService: QuotesService) { }
+  userSearch : string ="";
 
   ngOnInit(): void {
   }
 
   onAddQuote(){
     this.quotesService.clickCreateQuote.emit(true);
+  }
+
+  onSearch(){
+    this.quotesService.searchMode.emit(true);
+    this.quotesService.searchQuotes(this.userSearch.trim());
   }
 
 }
