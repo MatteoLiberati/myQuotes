@@ -9,31 +9,37 @@ import { Quote } from './quote.interface';
 export class QuotesService {
   constructor(private dbConnectionsService: DbConnectionsService) {}
 
-  // quotes : Quote[] = [];
+  quotes : Quote[] = [];
   updateQuotes : Subject<Quote[]> = new Subject();
   clickCreateQuote : EventEmitter<boolean> = new EventEmitter();
 
-  quotes : Quote[] = [
-    {
-      "quote" : "Una vera amica è colei che ti prende per mano e ti tocca il cuore." ,
-      "author" : "Gabriel Garcia Márquez",
-      "dateOfInput" : new Date(),
-    },
-    {
-      "quote" : "Gioca e basta. Divertiti. Goditi la partita." ,
-      "author" : "Michael Jordan",
-      "dateOfInput" : new Date(),
-    },
-    {
-      "quote" : "Un’amica è un’altra me stessa." ,
-      "author" : "Zenone di Cizio",
-      "dateOfInput" : new Date(),
-    }
-  ];
+  // quotes : Quote[] = [
+  //   {
+  //     "quote" : "Una vera amica è colei che ti prende per mano e ti tocca il cuore." ,
+  //     "author" : "Gabriel Garcia Márquez",
+  //     "dateOfInput" : new Date(),
+  //   },
+  //   {
+  //     "quote" : "Gioca e basta. Divertiti. Goditi la partita." ,
+  //     "author" : "Michael Jordan",
+  //     "dateOfInput" : new Date(),
+  //   },
+  //   {
+  //     "quote" : "Un’amica è un’altra me stessa." ,
+  //     "author" : "Zenone di Cizio",
+  //     "dateOfInput" : new Date(),
+  //   }
+  // ];
 
   addNewQuote(quote: Quote) {
     this.quotes.push(quote);
-    this.dbConnectionsService.saveRecords(this.quotes).subscribe();
+    this.saveRecords();
+    this.updateSubjectQuotes();
+  }
+
+  deleteQuote(id:number){
+    this.quotes.splice(id,1);
+    this.saveRecords();
     this.updateSubjectQuotes();
   }
 
@@ -48,6 +54,10 @@ export class QuotesService {
 
   updateSubjectQuotes(){
     this.updateQuotes.next(this.quotes.slice());
+  }
+
+  saveRecords(){
+    this.dbConnectionsService.saveRecords(this.quotes).subscribe();
   }
 
 }

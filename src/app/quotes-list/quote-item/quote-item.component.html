@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-end fs-5">
         <i (click)="onDelete()" class="bi bi-trash"></i>
     </div>
-    <div class="fw-lighter">entered {{quote.dateOfInput | date:"MM/dd/yy"}}</div>
+    <div class="fw-lighter date">entered {{quote.dateOfInput | date:"MM/dd/yy"}}</div>
     <h4 class="text-center fst-italic">"{{quote.quote | lowercase}}"</h4>
     <div class="text-end fw-lighter">{{quote.author | titlecase}}</div>
 </li>

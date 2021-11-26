@@ -1,12 +1,8 @@
 .spinner-box{
-    height: 50vh;
+    margin-top: 350px;
 }
 
 .spinner-border{
     width: 80px;
     height: 80px;
-}
-
-.list-group{
-    overflow: auto;
 }

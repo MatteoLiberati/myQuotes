@@ -21,12 +21,13 @@ export class QuotesListComponent implements OnInit {
     this.quotesService.updateQuotes.subscribe(quotes=>{
       this.quotes = quotes;
       this.spinner = false;
-      console.log(this.quotes);      
       if(this.quotes.length === 0){
         this.noResult = true;
       }
     })
   }
 
-
+  indexReverse(index : number){
+    return ((this.quotes.length - 1)-index);
+  }
 }

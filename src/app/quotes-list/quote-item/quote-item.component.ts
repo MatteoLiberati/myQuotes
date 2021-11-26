@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Quote } from 'src/app/quote.interface';
+import { QuotesService } from 'src/app/quotes.service';
 
 @Component({
   selector: 'app-quote-item',
@@ -9,12 +10,15 @@ import { Quote } from 'src/app/quote.interface';
 export class QuoteItemComponent implements OnInit {
 
   @Input() quote : Quote;
-  constructor() { }
+  @Input() index : number;
+  constructor(private quotesService : QuotesService) { }
 
   ngOnInit(): void {
   }
 
   onDelete(){
+    this.quotesService.deleteQuote(this.index);
+    console.log("delete clicked");
     
   }
 }
