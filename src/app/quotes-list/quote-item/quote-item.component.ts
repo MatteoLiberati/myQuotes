@@ -10,14 +10,13 @@ import { QuotesService } from 'src/app/quotes.service';
 export class QuoteItemComponent implements OnInit {
 
   @Input() quote : Quote;
-  @Input() index : number;
   constructor(private quotesService : QuotesService) { }
 
   ngOnInit(): void {
   }
 
   onDelete(){
-    this.quotesService.deleteQuote(this.index);
+    this.quotesService.deleteQuote(this.quote.id);
   }
 
   onCopy(){

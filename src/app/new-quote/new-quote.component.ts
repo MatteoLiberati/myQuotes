@@ -30,10 +30,11 @@ export class NewQuoteComponent implements OnInit {
     if (this.newQuoteForm.valid) {
       this.newQuote = {
         quote: this.newQuoteForm.get('quote')!.value.trim(),
-        author: this.newQuoteForm.get('author')!.value.trim()
+        author: this.newQuoteForm.get('author')!.value
           ? this.newQuoteForm.get('author')!.value.trim()
           : 'anonymous',
         dateOfInput: new Date(),
+        id : Date.now(), 
       };
       this.quotesService.addNewQuote(this.newQuote);
       this.newQuoteForm.reset();

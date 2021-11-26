@@ -42,10 +42,6 @@ export class QuotesListComponent implements OnInit, OnDestroy {
     })
   }
 
-  indexReverse(index : number){
-    return ((this.quotes.length - 1)-index);
-  }
-
   ngOnDestroy(): void {
     this.subSearchMode.unsubscribe();
     this.subUpdate.unsubscribe();
