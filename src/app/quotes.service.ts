@@ -91,14 +91,23 @@ export class QuotesService {
   searchQuotes(userSearch : string){
     if(userSearch != ""){
       let strings : string[] = userSearch.toLowerCase().split(" "); 
+      // double insertion control
+      for(let i= 0; i<strings.length - 1; i++){
+        if(strings[i] == strings[i+1]){
+          strings.splice(i,1);
+        }
+      }
   
       let filteredQuotes : Quote[] = [];
       for (let string of strings){
-        filteredQuotes = this.quotes.filter(quote=>{
-          var punctRE = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~]/g;
+        this.quotes.map(quote=>{
+          //exclude punctuation
+          let punctRE = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~]/g;
           
-          return quote.author.toLowerCase().replace(punctRE, ' ').split(" ").includes(string) 
-          || quote.quote.toLowerCase().replace(punctRE, ' ').split(" ").includes(string)
+          if(quote.author.toLowerCase().replace(punctRE, ' ').split(" ").includes(string) 
+          || quote.quote.toLowerCase().replace(punctRE, ' ').split(" ").includes(string)){
+            filteredQuotes.push(quote);
+          }
         })
       }
       this.updateQuotes.next(filteredQuotes.slice());
