@@ -4,13 +4,14 @@
       <button class="navbar-toggler" type="button" (click)="toogleMenu()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div [ngClass]="{'collapse navbar-collapse': collapse}">
-        <div class="d-flex justify-content-end">
-          <button class="btn btn-outline-primary me-5" type="button" (click)="onAddQuote()">Add new quote</button>
-          <form class="d-flex">
-            <input [(ngModel)]="userSearch" (keyup)="onSearch()" name="userSearch" class="form-control me-2" type="text" placeholder="Search">
-          </form>
-        </div>
+      <div [ngClass]="{'collapse': collapse}" class="navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><button class="btn btn-outline-primary me-5" type="button" (click)="onAddQuote()">Add new quote</button></li>
+          <li class="nav-item new-quote-mobile"(click)="onAddQuote()">Add new quote</li>
+          <li class="nav-item searchbar">
+            <input [(ngModel)]="userSearch" (keyup)="onSearch()" id="userSearch" name="userSearch" class="form-control me-2" type="text" placeholder="Search">
+          </li>
+        </ul>
       </div>
     </div>
 </nav>

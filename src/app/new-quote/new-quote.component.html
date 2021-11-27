@@ -1,4 +1,4 @@
-<form class="col-sm-6" [formGroup]="newQuoteForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="newQuoteForm" (ngSubmit)="onSubmit()">
   <div class="text-end">
     <button (click)="onExit()" type="button" class="btn-close"></button>
   </div>
@@ -15,6 +15,7 @@
       }"
       name="quote"
       id="quote"
+      cols="80"
       rows="4"
     ></textarea>
   
