@@ -4,10 +4,10 @@
     <div class="container mt-2">
         <app-quotes-list></app-quotes-list>
     </div>
-    <div *ngIf="createQuote" class="new-quote d-flex justify-content-center align-items-center">
+    <div *ngIf="createQuote" class="modal d-flex justify-content-center align-items-center">
         <app-new-quote class="w-100 d-flex justify-content-center"></app-new-quote>
     </div>
-    <div *ngIf="deleteModal" class="new-quote d-flex justify-content-center align-items-center">
+    <div *ngIf="deleteModal" class="modal d-flex justify-content-center align-items-center">
         <app-delete-modal [quoteToDelete]="deleteModal"></app-delete-modal>
     </div>
 </div>
