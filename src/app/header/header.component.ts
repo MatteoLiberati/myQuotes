@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private quotesService: QuotesService) { }
   subSearchedString : Subscription;
   userSearch : string ="";
+  collapse : boolean = true;
 
   ngOnInit(): void {
     this.subSearchedString = this.quotesService.searchedString.subscribe(searchedString=>{
@@ -30,6 +31,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.subSearchedString.unsubscribe();
+  }
+
+  toogleMenu(){
+    this.collapse = !this.collapse;
   }
 
 }

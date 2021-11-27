@@ -1,14 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand">My quotes</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" (click)="toogleMenu()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-        <button class="btn btn-outline-primary me-5" type="button" (click)="onAddQuote()">Add new quote</button>
-        <form class="d-flex">
-          <input [(ngModel)]="userSearch" (keyup)="onSearch()" name="userSearch" class="form-control me-2" type="text" placeholder="Search">
-        </form>
+      <div [ngClass]="{'collapse navbar-collapse': collapse}">
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-outline-primary me-5" type="button" (click)="onAddQuote()">Add new quote</button>
+          <form class="d-flex">
+            <input [(ngModel)]="userSearch" (keyup)="onSearch()" name="userSearch" class="form-control me-2" type="text" placeholder="Search">
+          </form>
+        </div>
       </div>
     </div>
 </nav>
