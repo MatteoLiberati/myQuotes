@@ -1,3 +1,7 @@
+.title{
+    text-shadow: 1px 1px 2px lightgrey, 0 0 1em lightgrey, 0 0 0.2em lightgrey;
+}
+
 .modal{
     top: 0;
     left: 0;
