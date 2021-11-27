@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Quote } from './quote.interface';
 import { QuotesService } from './quotes.service';
 
 @Component({
@@ -10,15 +11,22 @@ import { QuotesService } from './quotes.service';
 export class AppComponent implements OnInit, OnDestroy {
   constructor(private quotesService: QuotesService){}
   createQuote : boolean = false;
-  subscriptionsCreateQuote : Subscription;
+  deleteModal : Quote;
+  subCreateQuote : Subscription;
+  subDeleteModal : Subscription;
 
   ngOnInit(){
-    this.subscriptionsCreateQuote = this.quotesService.clickCreateQuote.subscribe(event=>{
+    this.subCreateQuote = this.quotesService.clickCreateQuote.subscribe(event=>{
       this.createQuote = event;
     });
+
+    this.subDeleteModal = this.quotesService.deleteModal.subscribe(deleteModal=>{
+      this.deleteModal = deleteModal;
+    })
   }
 
   ngOnDestroy(){
-    this.subscriptionsCreateQuote.unsubscribe();
+    this.subCreateQuote.unsubscribe();
+    this.subDeleteModal.unsubscribe();
   }
 }

@@ -16,7 +16,7 @@ export class QuoteItemComponent implements OnInit {
   }
 
   onDelete(){
-    this.quotesService.deleteQuote(this.quote.id);
+    this.quotesService.deleteModal.next(this.quote);
   }
 
   onCopy(){

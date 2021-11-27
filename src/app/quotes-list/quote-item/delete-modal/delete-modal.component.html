@@ -1,0 +1,13 @@
+<div>
+    <div class="text-end">
+      <button type="button" class="btn-close" (click)="onExit()"></button>
+    </div>
+    <h3 class="text-center">Are you sure you want to delete?</h3>
+    <p>"{{quoteToDelete.quote | lowercase}}"</p>
+    <p class="text-end">({{quoteToDelete.author | lowercase}})</p>
+    <div class="text-center">
+        <button (click)="onDelete()" class="btn btn-danger me-5" type="button">Yes, Delete</button>
+        <button (click)="onExit()" class="btn btn-info" type="button">No, Exit</button>
+    </div>
+</div>
+  

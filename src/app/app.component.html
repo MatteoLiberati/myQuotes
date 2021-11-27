@@ -7,4 +7,7 @@
     <div *ngIf="createQuote" class="new-quote d-flex justify-content-center align-items-center">
         <app-new-quote class="w-100 d-flex justify-content-center"></app-new-quote>
     </div>
+    <div *ngIf="deleteModal" class="new-quote d-flex justify-content-center align-items-center">
+        <app-delete-modal [quoteToDelete]="deleteModal"></app-delete-modal>
+    </div>
 </div>
