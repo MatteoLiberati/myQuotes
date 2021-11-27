@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { QuotesService } from '../quotes.service';
 
 @Component({
@@ -6,12 +7,16 @@ import { QuotesService } from '../quotes.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private quotesService: QuotesService) { }
+  subSearchedString : Subscription;
   userSearch : string ="";
 
   ngOnInit(): void {
+    this.subSearchedString = this.quotesService.searchedString.subscribe(searchedString=>{
+      this.userSearch = searchedString;
+    })
   }
 
   onAddQuote(){
@@ -21,6 +26,10 @@ export class HeaderComponent implements OnInit {
   onSearch(){
     this.quotesService.searchMode.emit(true);
     this.quotesService.searchQuotes(this.userSearch.trim());
+  }
+
+  ngOnDestroy(){
+    this.subSearchedString.unsubscribe();
   }
 
 }

@@ -11,11 +11,11 @@ export class QuotesService {
 
   // quotes : Quote[] = [];
   updateQuotes : Subject<Quote[]> = new Subject();
+  deleteModal : Subject<Quote> = new EventEmitter();
+  searchedString : Subject<string> = new Subject();
   clickCreateQuote : EventEmitter<boolean> = new EventEmitter();
   searchMode : EventEmitter<boolean> = new EventEmitter();
   noResult : EventEmitter<boolean> = new EventEmitter();
-  // deleteModal : EventEmitter<boolean> = new EventEmitter();
-  deleteModal : Subject<Quote> = new EventEmitter();
 
   quotes : Quote[] = [
     {

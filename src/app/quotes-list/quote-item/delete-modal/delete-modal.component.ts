@@ -22,6 +22,7 @@ export class DeleteModalComponent implements OnInit {
   onDelete(){
     this.quotesService.deleteQuote(this.quoteToDelete.id);
     this.quoteUndefined();
+    this.quotesService.searchedString.next("");
   }
 
   private quoteUndefined(){
