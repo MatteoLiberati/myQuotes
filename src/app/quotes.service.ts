@@ -16,6 +16,7 @@ export class QuotesService {
   clickCreateQuote : EventEmitter<boolean> = new EventEmitter();
   searchMode : EventEmitter<boolean> = new EventEmitter();
   noResult : EventEmitter<boolean> = new EventEmitter();
+  menuMobile : EventEmitter<boolean> = new EventEmitter();
 
   quotes : Quote[] = [
     {
@@ -82,6 +83,7 @@ export class QuotesService {
     if(this.quotes.length == 0){
       this.noResult.emit(true);
     }
+    this.menuMobile.emit(true);
   }
 
   initialLoadingQuotes(){
@@ -99,6 +101,7 @@ export class QuotesService {
 
   saveRecords(){
     this.dbConnectionsService.saveRecords(this.quotes).subscribe();
+    this.menuMobile.emit(true);
   }
 
   searchQuotes(userSearch : string){

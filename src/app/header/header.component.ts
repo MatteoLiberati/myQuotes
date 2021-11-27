@@ -11,12 +11,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private quotesService: QuotesService) { }
   subSearchedString : Subscription;
+  subMenuMobile : Subscription;
   userSearch : string ="";
   collapse : boolean = true;
 
   ngOnInit(): void {
     this.subSearchedString = this.quotesService.searchedString.subscribe(searchedString=>{
       this.userSearch = searchedString;
+    })
+
+    this.subMenuMobile = this.quotesService.menuMobile.subscribe(menuMobile=>{
+      this.collapse = menuMobile;
     })
   }
 
