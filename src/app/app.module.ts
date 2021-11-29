@@ -10,6 +10,7 @@ import { QuotesListComponent } from './quotes-list/quotes-list.component';
 import { QuoteItemComponent } from './quotes-list/quote-item/quote-item.component';
 import { HeaderComponent } from './header/header.component';
 import { DeleteModalComponent } from './quotes-list/quote-item/delete-modal/delete-modal.component';
+import { SuggestQuoteComponent } from './suggest-quote/suggest-quote.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DeleteModalComponent } from './quotes-list/quote-item/delete-modal/dele
     QuoteItemComponent,
     HeaderComponent,
     DeleteModalComponent,
+    SuggestQuoteComponent,
   ],
   imports: [
     BrowserModule,

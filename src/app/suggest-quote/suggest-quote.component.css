@@ -1,0 +1,12 @@
+label{
+    cursor: pointer;
+}
+
+.close-quote{
+    color: rgb(133, 133, 133);
+    transition: color 0.1s linear;
+}
+
+.close-quote:hover{
+    color: black;
+}
