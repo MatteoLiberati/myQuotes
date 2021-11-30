@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.subSearchedString.unsubscribe();
+    this.subMenuMobile.unsubscribe();
   }
 
   toogleMenu(){

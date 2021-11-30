@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Quote } from '../quote.interface';
 import { QuotesService } from '../quotes.service';
 import { SuggestQuotesService } from '../suggest-quotes.service';
@@ -39,7 +39,6 @@ export class SuggestQuoteComponent implements OnInit {
     this.suggestQuote.id = Date.now();
     this.quotesService.addNewQuote(this.suggestQuote);
     this.hidden = true;
-    this.quotesService.infoMessage.next("suggest quote saved successfully")
   }
 
   private sound() {

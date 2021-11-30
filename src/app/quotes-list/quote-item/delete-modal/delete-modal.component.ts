@@ -7,20 +7,17 @@ import { QuotesService } from 'src/app/quotes.service';
   templateUrl: './delete-modal.component.html',
   styleUrls: ['./delete-modal.component.css']
 })
-export class DeleteModalComponent implements OnInit {
+export class DeleteModalComponent {
 
   constructor(private quotesService: QuotesService) { }
   @Input() quoteToDelete : Quote;
-
-  ngOnInit(): void {
-  }
 
   onExit(){
     this.quoteUndefined();
   }
 
   onDelete(){
-    this.quotesService.deleteQuote(this.quoteToDelete.id);
+    this.quotesService.deleteQuote(this.quoteToDelete);
     this.quoteUndefined();
     this.quotesService.searchedString.next("");
   }

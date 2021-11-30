@@ -11,7 +11,7 @@ export class QuotesService {
 
   quotes : Quote[] = [];
   updateQuotes : Subject<Quote[]> = new Subject();
-  deleteModal : Subject<Quote> = new EventEmitter();
+  deleteModal : Subject<Quote> = new Subject();
   searchedString : Subject<string> = new Subject();
   infoMessage : Subject<string> = new Subject();
   clickCreateQuote : EventEmitter<boolean> = new EventEmitter();
@@ -71,12 +71,12 @@ export class QuotesService {
     if(this.quotes.length != 0){
       this.noResult.emit(false);
     }
-    this.infoMessage.next("quote saved successfully");
+    this.infoMessage.next(this.shortQuoteString(quote.quote) + "saved successfully");
   }
 
-  deleteQuote(id:number){
+  deleteQuote(quoteToDelete : Quote){
     this.quotes.forEach(quote=>{
-      if(quote.id === id){
+      if(quote.id === quoteToDelete.id){
         this.quotes.splice(this.quotes.indexOf(quote),1);
       }
     })
@@ -86,7 +86,7 @@ export class QuotesService {
       this.noResult.emit(true);
     }
     this.menuMobile.emit(true);
-    this.infoMessage.next("Quote deleted successfully");
+    this.infoMessage.next(this.shortQuoteString(quoteToDelete.quote) + "deleted successfully");
   }
 
   initialLoadingQuotes(){
@@ -137,6 +137,14 @@ export class QuotesService {
         this.noResult.emit(false);
       }
     }
+  }
+
+  shortQuoteString(quote : string){
+    let shortQuote = `"${quote}" `;
+    if(quote.length > 38){
+      shortQuote = `"${quote.substr(0,38)} ..." `
+    }
+    return shortQuote;
   }
 
 }
