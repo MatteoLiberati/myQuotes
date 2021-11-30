@@ -70,6 +70,7 @@ export class QuotesService {
     this.saveRecords();
     this.updateSubjectQuotes();
     this.infoMessage.next("All citations have been deleted");
+    this.menuMobile.emit(true);
   }
   
 

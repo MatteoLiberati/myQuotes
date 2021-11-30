@@ -4,12 +4,19 @@
       <button class="navbar-toggler" type="button" (click)="toogleMenu()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div [ngClass]="{'collapse': collapse}" class="navbar-collapse">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><button class="btn btn-outline-primary me-2" type="button" (click)="onAddQuote()">Add new quote</button></li>
-          <li class="nav-item new-quote-mobile"(click)="onAddQuote()">Add new quote</li>
-          <li class="nav-item"><button class="btn btn-outline-danger me-2" (click)="onDeleteAllQuote()" type="button">Delete all quotes</button></li>
-          <li class="nav-item new-quote-mobile" (click)="onDeleteAllQuote()" >Delete all quotes</li>
+      <div [ngClass]="{'collapse': collapse}" class="navbar-collapse mt-2">
+        <ul class="navbar-nav">
+          <!-- add quotes button and mobile list -->
+          <li class="nav-item d-none  d-sm-none d-md-none d-lg-block">
+            <button class="btn btn-outline-primary me-2" type="button" (click)="onAddQuote()">Add new quote</button>
+          </li>
+          <li class="nav-item d-block  d-md-block d-lg-none d-sm-block listmobile"(click)="onAddQuote()">Add new quote</li>
+          <!-- delete quotes button and mobile list -->
+          <li class="nav-item d-none  d-sm-none d-md-none d-lg-block">
+            <button class="btn btn-outline-danger me-2" (click)="onDeleteAllQuote()" type="button">Delete all quotes</button>
+          </li>
+          <li class="nav-item d-block  d-md-block d-lg-none d-sm-block listmobile" (click)="onDeleteAllQuote()" >Delete all quotes</li>
+          <!-- search bar -->
           <li class="nav-item searchbar">
             <input [(ngModel)]="userSearch" (keyup)="onSearch()" id="userSearch" name="userSearch" class="form-control" type="text" placeholder="Search">
           </li>
