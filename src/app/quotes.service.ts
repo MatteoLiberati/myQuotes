@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { DbConnectionsService } from './db-connections.service';
 import { Quote } from './quote.interface';
-// initial setup quotes - associate with the variable quotes
+// Initial setup quotes - associate with the variable quotes
 import { initializeQuotes } from "../assets/initializeQuotes";
 
 @Injectable({
@@ -17,6 +17,7 @@ export class QuotesService {
   searchedString : Subject<string> = new Subject();
   infoMessage : Subject<string> = new Subject();
   clickCreateQuote : EventEmitter<boolean> = new EventEmitter();
+  deleteAllQuotes : EventEmitter<boolean> = new EventEmitter();
   searchMode : EventEmitter<boolean> = new EventEmitter();
   noResult : EventEmitter<boolean> = new EventEmitter();
   menuMobile : EventEmitter<boolean> = new EventEmitter();
@@ -64,7 +65,44 @@ export class QuotesService {
     this.menuMobile.emit(true);
   }
 
+  resetQuotes(){
+    this.quotes = [];
+    this.saveRecords();
+    this.updateSubjectQuotes();
+    this.infoMessage.next("All citations have been deleted");
+  }
+  
+
   searchQuotes(userSearch : string){
+    if(userSearch != ""){
+      this.noResult.emit(false);
+      this.searchMode.emit(true);
+      let strings : string[] = userSearch.toLowerCase().split(" "); 
+      // double insertion control
+      strings = [...new Set(strings)];
+  
+      let filteredQuotes : Quote[] = [];
+      for (let string of strings){
+        this.quotes.map(quote=>{
+          if(quote.author.toLowerCase().includes(string) 
+          || quote.quote.toLowerCase().includes(string)){
+            if(!filteredQuotes.includes(quote)){
+              filteredQuotes.push(quote);
+            }
+          }
+        })
+      }
+      this.updateQuotes.next(filteredQuotes.slice());
+    }else{
+      this.searchMode.emit(false);
+      this.updateSubjectQuotes();
+      if(this.quotes.length != 0){
+        this.noResult.emit(false);
+      }
+    }
+  }
+
+  alternativeSearchQuotes(userSearch : string){
     if(userSearch != ""){
       this.noResult.emit(false);
       this.searchMode.emit(true);

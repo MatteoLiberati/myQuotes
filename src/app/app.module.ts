@@ -11,6 +11,7 @@ import { QuoteItemComponent } from './quotes-list/quote-item/quote-item.componen
 import { HeaderComponent } from './header/header.component';
 import { DeleteModalComponent } from './quotes-list/quote-item/delete-modal/delete-modal.component';
 import { SuggestQuoteComponent } from './suggest-quote/suggest-quote.component';
+import { DeleteAllModalComponent } from './quotes-list/delete-all-modal/delete-all-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SuggestQuoteComponent } from './suggest-quote/suggest-quote.component';
     HeaderComponent,
     DeleteModalComponent,
     SuggestQuoteComponent,
+    DeleteAllModalComponent,
   ],
   imports: [
     BrowserModule,

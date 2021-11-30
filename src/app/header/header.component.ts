@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onSearch(){
     this.quotesService.searchMode.emit(true);
     this.quotesService.searchQuotes(this.userSearch.trim());
+    // this.quotesService.alternativeSearchQuotes(this.userSearch.trim());
   }
 
   ngOnDestroy(){
@@ -43,4 +44,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.collapse = !this.collapse;
   }
 
+  onDeleteAllQuote(){
+    if(this.quotesService.quotes.length != 0){
+      this.quotesService.deleteAllQuotes.emit(true);
+    }else{
+      this.quotesService.infoMessage.next("You have no quotes on your list to delete");
+    }
+  }
 }

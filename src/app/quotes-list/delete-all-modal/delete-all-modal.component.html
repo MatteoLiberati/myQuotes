@@ -1,0 +1,13 @@
+<div class="text-center">
+    <div class="text-end">
+      <button type="button" class="btn-close" (click)="onExit()"></button>
+    </div>
+    <i class="bi bi-exclamation-triangle fs-1"></i>
+    <h3>The requested operation will delete the entire list!</h3>
+    <h3>Are you sure you want to proceed?</h3>
+    <div>
+        <button (click)="deleteAll()" class="btn btn-danger me-5" type="button">Yes, Delete</button>
+        <button (click)="onExit()" class="btn btn-info" type="button">No, Exit</button>
+    </div>
+</div>
+  

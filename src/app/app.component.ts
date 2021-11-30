@@ -10,11 +10,12 @@ import { QuotesService } from './quotes.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   constructor(private quotesService: QuotesService){}
-  createQuote : boolean = false;
-  deleteModal : Quote;
   subCreateQuote : Subscription;
   subDeleteModal : Subscription;
   subInfoMessage : Subscription;
+  createQuote : boolean = false;
+  deleteAllQuotes : boolean = false;
+  deleteModal : Quote;
   randomSuggestQuote : Quote;
   message : string = "" ;
 
@@ -33,6 +34,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.message = "";
       },2000)
     })
+
+    this.quotesService.deleteAllQuotes.subscribe(deleteAllQuotes=>{
+      this.deleteAllQuotes = deleteAllQuotes;
+    });
   }
 
   ngOnDestroy(){

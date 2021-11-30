@@ -12,4 +12,7 @@
     <div *ngIf="deleteModal" class="modal d-flex justify-content-center align-items-center">
         <app-delete-modal [quoteToDelete]="deleteModal"></app-delete-modal>
     </div>
+    <div *ngIf="deleteAllQuotes" class="modal d-flex justify-content-center" class="modal d-flex justify-content-center align-items-center">
+        <app-delete-all-modal></app-delete-all-modal>
+    </div>
 </div>
