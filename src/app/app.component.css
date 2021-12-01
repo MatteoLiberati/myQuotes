@@ -2,6 +2,15 @@
     text-shadow: 1px 1px 2px lightgrey, 0 0 1em lightgrey, 0 0 0.2em lightgrey;
 }
 
+.app{
+    height: 100vh;
+}
+
+.container{
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
 .modal{
     top: 0;
     left: 0;
@@ -16,3 +25,49 @@
         padding: 0 10px;
     }
 }
+
+/* ::-webkit-scrollbar {
+    width: 8px;
+} */
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 8px;
+    background-image: linear-gradient(#e66465, #9198e5); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+     
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: grey; 
+} */
+
+/* width */
+.scrollbar{
+    overflow-y: scroll;
+    scrollbar-color: #b3a0ce rgba(0,0,0,0.1);
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(#b3a0ce, #6C4D76);
+    border-radius: 8px;
+  }
