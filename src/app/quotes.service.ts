@@ -11,6 +11,7 @@ import { initializeQuotes } from "../assets/initializeQuotes";
 export class QuotesService {
   constructor(private dbConnectionsService: DbConnectionsService) {}
 
+  // quotes : Quote[] = initializeQuotes;
   quotes : Quote[] = [];
   updateQuotes : Subject<Quote[]> = new Subject();
   deleteModal : Subject<Quote> = new Subject();
