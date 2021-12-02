@@ -1,9 +1,9 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { DbConnectionsService } from './db-connections.service';
-import { Quote } from './quote.interface';
+import { Quote } from '../quote.interface';
 // Initial setup quotes - associate with the variable quotes
-import { initializeQuotes } from "../assets/initializeQuotes";
+import { initializeQuotes } from "../../assets/initializeQuotes";
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +17,7 @@ export class QuotesService {
   deleteModal : Subject<Quote> = new Subject();
   searchedString : Subject<string> = new Subject();
   infoMessage : Subject<string> = new Subject();
+  errorMessage : Subject<string> = new Subject();
   clickCreateQuote : EventEmitter<boolean> = new EventEmitter();
   deleteAllQuotes : EventEmitter<boolean> = new EventEmitter();
   searchMode : EventEmitter<boolean> = new EventEmitter();
@@ -54,6 +55,8 @@ export class QuotesService {
         this.quotes = quotes;
       }
       this.updateSubjectQuotes();
+    }, error => {
+      this.errorMessage.next("A database connection error occurred");
     })
   }
 

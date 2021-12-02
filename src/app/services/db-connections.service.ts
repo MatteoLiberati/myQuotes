@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Quote } from './quote.interface';
+import { Quote } from '../quote.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class DbConnectionsService {
   'https://ng-challenge-sparkfabrik-default-rtdb.firebaseio.com/quotes.json';
 
   saveRecords(quotes : Quote[]){
-    return this.http.put(this.url, quotes);
+    return this.http.put('', quotes);
   }
 
   fetchRecords(){

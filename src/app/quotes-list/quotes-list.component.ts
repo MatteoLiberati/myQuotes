@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Quote } from '../quote.interface';
-import { QuotesService } from '../quotes.service';
+import { QuotesService } from '../services/quotes.service';
 
 
 @Component({
@@ -20,6 +20,7 @@ export class QuotesListComponent implements OnInit, OnDestroy {
   subUpdate : Subscription;
   subSearchMode : Subscription;
   subNoResult : Subscription;
+  @Input() errorMessage : string;
 
   ngOnInit(): void {
     this.spinner = true;

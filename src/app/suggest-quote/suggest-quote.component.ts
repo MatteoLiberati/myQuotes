@@ -1,8 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Quote } from '../quote.interface';
-import { QuotesService } from '../quotes.service';
-import { SuggestQuotesService } from '../suggest-quotes.service';
+import { QuotesService } from '../services/quotes.service';
+import { SuggestQuotesService } from '../services/suggest-quotes.service';
 
 @Component({
   selector: 'app-suggest-quote',
@@ -25,8 +25,12 @@ export class SuggestQuoteComponent implements OnInit {
           this.suggestQuote = randomSuggestQuote;
           this.sound();
           this.hidden = false;
-        }
-        );
+        }, error => {
+          this.quotesService.errorMessage.next("It is not possible to show the suggested quote");
+          setTimeout(()=>{
+            this.quotesService.errorMessage.next("");
+          },4000)
+        })
       },4500)
   }
 

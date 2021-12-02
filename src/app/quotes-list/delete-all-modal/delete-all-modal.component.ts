@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuotesService } from 'src/app/quotes.service';
+import { QuotesService } from 'src/app/services/quotes.service';
 
 @Component({
   selector: 'app-delete-all-modal',

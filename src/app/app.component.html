@@ -2,10 +2,14 @@
     <h1 class="pt-5 pb-2 text-center title">My quotes</h1>
     <app-header></app-header>
     <app-suggest-quote></app-suggest-quote>
+    <!-- error db connection -->
+    <div *ngIf="errorMessage" class="alert alert-danger text-center mt-3">{{errorMessage}}</div>
+    <!-- console message -->
     <div *ngIf="message" class="alert alert-info text-center mt-3">{{message}}</div>
     <div class="container mt-2">
-        <app-quotes-list class="list"></app-quotes-list>
+        <app-quotes-list class="list" [errorMessage]="errorMessage"></app-quotes-list>
     </div>
+    <!-- modals -->
     <div *ngIf="createQuote" class="modal d-flex justify-content-center align-items-center">
         <app-new-quote></app-new-quote>
     </div>

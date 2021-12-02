@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Quote } from 'src/app/quote.interface';
-import { QuotesService } from 'src/app/quotes.service';
+import { QuotesService } from 'src/app/services/quotes.service';
 
 @Component({
   selector: 'app-quote-item',

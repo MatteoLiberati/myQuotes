@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Quote } from '../quote.interface';
-import { QuotesService } from '../quotes.service';
+import { QuotesService } from '../services/quotes.service';
 
 @Component({
   selector: 'app-new-quote',

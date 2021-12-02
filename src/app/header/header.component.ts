@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { QuotesService } from '../quotes.service';
+import { QuotesService } from '../services/quotes.service';
 
 @Component({
   selector: 'app-header',
