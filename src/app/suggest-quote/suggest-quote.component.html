@@ -1,12 +1,14 @@
 <div *ngIf="!hidden" class="alert alert-success mt-4">
     <div class="container text-center">
-        <div (click)="closeSuggestQuote()" class="text-end d-flex align-center justify-content-end close-quote"> 
+        <div (click)="closeSuggestQuote()" class="text-end d-flex align-center justify-content-end close-quote d-none d-sm-block"> 
             <label for="close-button" class="me-2 d-none d-lg-block">Close suggested quote</label> 
             <button type="button" class="btn-close" id="close-button"></button>
         </div>
-        <h4>Suggested Quote!</h4>
-        <p>"{{suggestQuote.quote | lowercase}}"</p>
-        <p>( {{suggestQuote.author | titlecase}} )</p>
+        <h4 class="d-none d-sm-block">Suggested Quote!</h4>
+        <p>"{{suggestQuote.quote | lowercase}}"
+            <span class=".d-block .d-sm-none">({{suggestQuote.author | titlecase}})</span>
+        </p>
+        <p class="d-none d-sm-block">( {{suggestQuote.author | titlecase}} )</p>
         <button (click)="saveSuggestQuote()" class="btn btn-success me-3">Save</button>
         <button (click)="closeSuggestQuote()" class="btn btn-danger">Close</button>
     </div>

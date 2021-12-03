@@ -39,4 +39,8 @@
     .modal{
         padding: 0 10px;
     }
+
+    .app{
+        height: auto;
+    }
 }
