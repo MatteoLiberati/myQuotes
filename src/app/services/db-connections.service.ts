@@ -13,7 +13,7 @@ export class DbConnectionsService {
   'https://ng-challenge-sparkfabrik-default-rtdb.firebaseio.com/quotes.json';
 
   saveRecords(quotes : Quote[]){
-    return this.http.put('', quotes);
+    return this.http.put(this.url, quotes);
   }
 
   fetchRecords(){
